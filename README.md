@@ -419,13 +419,14 @@ First 50 tokens with their IDs and decoded values
 ### Prerequisites
 
 ```bash
-pip install torch transformers
+pip install torch transformers datasets sentence-transformers scikit-learn matplotlib seaborn tqdm
 ```
 
-### Run Complete Analysis
+### Run Module 1: Tokenizer Comparison
 
 ```bash
-python python.py
+cd 01_llm_inference_tokenization
+python 03_tokenizer_comparison.py
 ```
 
 This will:
@@ -437,8 +438,12 @@ This will:
 ### Save Output to Log
 
 ```bash
-python python.py 2>&1 | tee tokenizer_analysis.log
+python 03_tokenizer_comparison.py 2>&1 | tee tokenizer_analysis.log
 ```
+
+### Run All Modules
+
+See [LEARNING_PATH.md](LEARNING_PATH.md) for complete instructions on running each module.
 
 ### Execution Time
 
@@ -451,12 +456,30 @@ python python.py 2>&1 | tee tokenizer_analysis.log
 
 ```
 .
-├── python.py              # Main analysis script with all tokenizers
-├── python_fast.py         # Optimized Phi-3 inference only
-├── flan_t5.py            # Standalone FLAN-T5 script
-├── tokenizer_analysis.log # Generated output log
-└── README.md             # This file
+├── README.md                              # This file (tokenizer overview)
+├── LEARNING_PATH.md                       # Tutorial sequence guide
+├── .gitignore
+│
+├── 01_llm_inference_tokenization/         # Module 1: LLM Basics (Nov 30)
+│   ├── 01_phi3_inference.py               # Phi-3 causal LM inference
+│   ├── 02_flan_t5_inference.py            # Flan-T5 Seq2Seq inference
+│   ├── 03_tokenizer_comparison.py         # Comprehensive tokenizer analysis
+│   └── tokenizer_analysis.log             # Output log
+│
+├── 02_text_embeddings/                    # Module 2: Embeddings (Dec 2-3)
+│   ├── 01_deberta_embeddings.py           # Word-level embeddings
+│   └── 02_sentence_transformer.py         # Sentence-level embeddings
+│
+└── 03_sentiment_analysis/                 # Module 3: Classification (Dec 9)
+    ├── README.md                          # LLM classifier documentation
+    ├── 01_model_evaluation.py             # Evaluation metrics demo
+    ├── 02_llm_classifier.py               # Zero-shot LLM classification
+    ├── confusion_matrix.png               # Evaluation visualization
+    └── ollama_confusion_matrix.png        # LLM classifier results
 ```
+
+> 📖 **New to this repo?** Check out [LEARNING_PATH.md](LEARNING_PATH.md) for the recommended tutorial sequence!
+
 
 ## 🔧 Code Features
 
